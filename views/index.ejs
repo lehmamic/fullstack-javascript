@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+      <style>
+          .titleField {
+              width: 600px;
+              margin-bottom: 20px;
+          }
+          .commentField {
+              width: 600px;
+              height: 100px;
+          }
+          .commentTimestamp {
+              color: darkgrey;
+          }
+      </style>
+  </head>
+  <body ng-controller="CommentsController">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <hr />
+    <form>
+        <div>
+            <label for="Title">Title</label>
+            <div>
+                <input id="Title" type="text" class="titleField" ng-model="title" />
+            </div>
+        </div>
+        <div>
+            <label for="Comment">Comment</label>
+            <div>
+                <textarea id="Comment" class="commentField" ng-model="comment"></textarea>
+            </div>
+        </div>
+        <div>
+            <button type="submit" ng-click="sendComment()">Send</button>
+        </div>
+    </form>
+    <hr />
+    <div ng-repeat="com in comments">
+        <h4>{{com.title}} <small class="commentTimestamp">{{com.timestamp | date: 'dd.MM.yyyy HH:mm:ss'}}</small></h4>
+        <div>
+            {{com.content}}
+        </div>
+    </div>
+
+    <script type="application/javascript" src="/lib/angular/angular.js"></script>
+    <script type="application/javascript" src="/javascripts/demo.js"></script>
+  </body>
+</html>
